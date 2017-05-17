@@ -7,10 +7,17 @@ import { Entry } from './classes/Entry';
   styleUrls: ['../styles/app.component.scss']
 })
 export class AppComponent {
-  private entries : Entry[]
+  public entries : Entry[] = []
 
   constructor()
   {
-    this.entries.push(new Entry(1,'dogs',new Date()))
+    let newEntry : Entry = 
+          {
+            id: 1,
+            body: 'I learned nothing.',
+            date: new Date()
+          };
+
+    this.entries.push(newEntry)
   }
 }

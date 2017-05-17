@@ -1,2 +1,4 @@
-<input (keyup.enter)="submitEntry()" placeholder="What did you learn today?"/>
-<button (click)="submitEntry()">Add</button>
+<form (ngSubmit)="submitEntry()">
+  <input [(ngModel)]="inputBody" name="entry-input" placeholder="What did you learn today?"/>
+  <button>Add</button>
+</form>

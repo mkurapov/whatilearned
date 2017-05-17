@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-single-entry',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../../../styles/single-entry.component.scss']
 })
 export class SingleEntryComponent implements OnInit {
-
+  @Input() entry;
+  
   constructor() { }
 
   ngOnInit() {

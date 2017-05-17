@@ -1,4 +1,2 @@
 <app-input-form></app-input-form>
-<li *ngFor="entry of entries">
-    <app-single-entry></app-single-entry>
-  </li>
+<app-single-entry *ngFor="let entry of entries" [entry]="entry"></app-single-entry>
