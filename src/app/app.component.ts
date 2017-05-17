@@ -20,4 +20,9 @@ export class AppComponent {
 
     this.entries.push(newEntry)
   }
+
+  addNewEntry(newEntry: Entry)
+  {
+    this.entries.push(newEntry);
+  }
 }

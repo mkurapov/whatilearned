@@ -21,13 +21,15 @@ export class InputFormComponent implements OnInit {
   {
     let newEntry = {
       id: Math.random(),
-      body: this.inputBody,
+      body:"",
       date: new Date()
     }
 
+    newEntry.body = this.inputBody;
+
 
     console.log(newEntry)
-    this.onSubmitEntry.emit()
+    this.onSubmitEntry.emit(newEntry)
     this.inputBody = ""
   }
 
