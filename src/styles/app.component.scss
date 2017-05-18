@@ -2,11 +2,33 @@
 {
    // width:80%;
    
-   margin-top: 300px;
+   margin-top: 240px;
 }
+
 
 .app-wrap
 {
     //width: 80vw;
     //margin: 0 auto;
+    
+
+    .bg-image
+    {
+        position: fixed;
+        transition: opacity 0.4s ease-in-out;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        right: 0;
+        background-size: cover;
+        background-position: bottom;
+        opacity: 0;
+        top: 0;
+
+        &.loaded
+        {
+            opacity: 0.8;
+        }
+    }
 }

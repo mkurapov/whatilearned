@@ -1,5 +1,6 @@
 <div class="app-wrap">
-    <app-input-form (onSubmitEntry)="addNewEntry($event)"></app-input-form>
+    <div [style.background-image]="'url('+bgImageSrc+')'" [class.loaded] = "imageLoaded" class="bg-image"></div>
+    <app-input-form (onSubmitEntry)="addNewEntry($event)"></app-input-form>s
     <div class="entries-wrap">
         <app-single-entry  [@fadeIn]="" *ngFor="let entry of entries" [entry]="entry"></app-single-entry>
     </div>

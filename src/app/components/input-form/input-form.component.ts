@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { Entry } from '../../classes/Entry';
 
 @Component({
@@ -10,7 +10,9 @@ export class InputFormComponent implements OnInit {
 
   //NEED TO ADD FORM VALIDATION
   @Output() onSubmitEntry: EventEmitter<any> = new EventEmitter();
+
   private inputBody : string;
+  private isShrunk : boolean = false;
 
   constructor() { }
 
@@ -31,6 +33,19 @@ export class InputFormComponent implements OnInit {
     console.log(newEntry)
     this.onSubmitEntry.emit(newEntry)
     this.inputBody = ""
+  }
+
+
+  @HostListener("window:scroll", ['$event']) onWindowScroll(event: Event) 
+  {
+    let scrollPosition = document.body.scrollTop;
+
+    if (scrollPosition > 400){
+      this.isShrunk = true;
+    }
+    else {
+      this.isShrunk = false;
+    }
   }
 
   
