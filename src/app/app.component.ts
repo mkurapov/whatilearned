@@ -1,28 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Entry } from './classes/Entry';
+import { EntryService } from './entry.service';
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['../styles/app.component.scss']
+  styleUrls: ['../styles/app.component.scss'],
+  providers: [EntryService]
 })
 export class AppComponent {
   public entries : Entry[] = []
 
-  constructor()
+  constructor(private entryService: EntryService)
   {
-    let newEntry : Entry = 
-          {
-            id: 1,
-            body: 'I learned nothing.',
-            date: new Date()
-          };
-
-    this.entries.push(newEntry)
+    
   }
+
+  ngOnInit()
+  {
+    this.entries = this.entryService.getEntries();
+  }
+
+  
 
   addNewEntry(newEntry: Entry)
   {
-    this.entries.unshift(newEntry)
+   
+    this.entryService.addEntry(newEntry);
   }
 }

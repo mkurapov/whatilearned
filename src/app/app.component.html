@@ -1,2 +1,4 @@
 <app-input-form (onSubmitEntry)="addNewEntry($event)"></app-input-form>
-<app-single-entry *ngFor="let entry of entries" [entry]="entry"></app-single-entry>
+<div class="entries-wrap">
+    <app-single-entry *ngFor="let entry of entries" [entry]="entry"></app-single-entry>
+</div>
