@@ -1,0 +1,24 @@
+ input{
+     background-color: black;
+     color:white;
+     font-family: Roboto;
+     width:100%;
+     height:300px;
+     margin: 0 auto;
+     top:0;right:0;left:0;
+     position: fixed;
+     display: block;
+     font-size: 80px;
+     padding-left: 20px;
+     border: 0px;
+     font-weight: bolder;
+
+     ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: grey;
+    }
+
+    &:focus
+    {
+        outline: none;
+    }
+ }

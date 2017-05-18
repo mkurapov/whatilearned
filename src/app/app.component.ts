@@ -23,6 +23,6 @@ export class AppComponent {
 
   addNewEntry(newEntry: Entry)
   {
-    this.entries.push(newEntry);
+    this.entries.unshift(newEntry)
   }
 }
