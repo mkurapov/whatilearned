@@ -56,6 +56,7 @@ export class AppComponent {
         duration: 500,
         offset: 0
       })
+      
   }
 
   

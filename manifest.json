@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "What I Learned",
+  "version": "1.0",
+  "description": "What I learned extension",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+
+    "chrome_url_overrides": {
+      "newtab": "index.html"
+    },
+
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/",
+    "geolocation"
+  ]
+}

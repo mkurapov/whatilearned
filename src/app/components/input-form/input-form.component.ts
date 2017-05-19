@@ -11,8 +11,8 @@ export class InputFormComponent implements OnInit {
   //NEED TO ADD FORM VALIDATION
   @Output() onSubmitEntry: EventEmitter<any> = new EventEmitter();
 
-  private inputBody : string;
-  private isShrunk : boolean = false;
+  public inputBody : string;
+  public isShrunk : boolean = false;
 
   constructor() { }
 
