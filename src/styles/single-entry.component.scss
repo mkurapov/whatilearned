@@ -1,10 +1,27 @@
 :host
 {
+    background-color: rgba(255,255,255,1);
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
-    margin-bottom: 20px;
-    border: 1px solid #eee;
-    padding: 10px 20px;
+    // border: 1px solid #eee;
+    padding: 40px 40px;
+    width:calc(100%-80px);
+    border-bottom:1px solid #eee;
+   // margin:20px auto;
+   // margin-left:10px;
+    //box-shadow: 0 2px 4px rgba(50,50,93,.1);
+
+    .entry-date
+    {
+        font-size: 20px;
+        margin:0;
+        color: lightskyblue;
+    }
+    .entry-body
+    {
+        margin-bottom:0;
+        font-size: 50px;
+    }
 }

@@ -3,6 +3,8 @@ import { Entry } from './classes/Entry';
 import { EntryService } from './entry.service';
 import { UnsplashService } from './unsplash.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import jump from 'jump.js'
+
 import {
   trigger,
   state,
@@ -40,7 +42,6 @@ export class AppComponent {
   {
     this.unsplashService.getRandomImage().subscribe((src)=>{
       this.bgImageSrc = src;
-      this.imageLoaded = true;
     });
 
     this.entries = this.entryService.getEntries();
@@ -51,6 +52,10 @@ export class AppComponent {
   addNewEntry(newEntry: Entry)
   {
     this.entryService.addEntry(newEntry);
+    jump('body', {
+        duration: 500,
+        offset: 0
+      })
   }
 
   

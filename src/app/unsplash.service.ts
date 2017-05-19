@@ -11,7 +11,7 @@ export class UnsplashService {
   getRandomImage(): Observable<string> {
         return new Observable(observer => {
             let i = new Image();
-            i.src = 'https://unsplash.it/1600/?random';
+            i.src = 'https://source.unsplash.com/random/3200';
             i.onload = _ => {
                 observer.next(i.src);
                 observer.complete();
