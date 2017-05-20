@@ -7,12 +7,24 @@ import { Http } from '@angular/http';
 export class WeatherService {
 
   private baseUrl:string = 'https://query.yahooapis.com/v1/public/yql?q=';
+  private cachedUserLocation : any;
+
   constructor(private http:Http) {}
 
-  getWeather(coords){
-    return this.http.get(this.createLink(coords)).map((res)=> {return res.json().query.results.channel});
+  getCachedLocation() {
+    console.log(localStorage.userLocation)
+    this.cachedUserLocation = JSON.parse(localStorage.userLocation);
     
+    return this.cachedUserLocation;
+  }
 
+  getWeather(coords){
+   return  this.http.get(this.createLink(coords)).map((res)=> {
+      const locationObj = res.json().query.results.channel;
+      localStorage.userLocation = JSON.stringify(locationObj);
+      this.cachedUserLocation = locationObj;
+      return locationObj;
+    });
   }
 
   createLink(coords):string {

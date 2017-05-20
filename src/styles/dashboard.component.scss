@@ -5,13 +5,13 @@
     align-content: center;
     align-items: center;
     position: relative;
-    padding: 25px 40px;
+    padding: 20px 40px 0px 40px;
     top:0;
     font-size: 20px;
     width: calc(100% - 80px);
-    background-color: rgb(195, 195, 195);
+    background-color: white;
     z-index: 101;
-    color:white;
+    color:rgb(195, 195, 195);
     font-weight: bold;
     min-height: 40px;
 }

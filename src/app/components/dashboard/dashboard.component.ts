@@ -9,12 +9,17 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit {
   
   @Input() userLocation : any;
-  public currentTime = <Observable<any>> Observable.of('Loading...');
-
-  constructor() { }
+  public currentTime : Date = new Date();
+  
+  constructor() { 
+    
+  }
 
   ngOnInit() {
-    this.currentTime = Observable.interval(1000).map(x => new Date()).share();
+    
+    setInterval(_=>{
+      this.currentTime = new Date();
+    },1000)
   }
 
 }
