@@ -7,14 +7,16 @@ import { Http } from '@angular/http';
 export class WeatherService {
 
   private baseUrl:string = 'https://query.yahooapis.com/v1/public/yql?q=';
-  private cachedUserLocation : any;
+  private cachedUserLocation : any = {};
 
   constructor(private http:Http) {}
 
   getCachedLocation() {
-    console.log(localStorage.userLocation)
-    this.cachedUserLocation = JSON.parse(localStorage.userLocation);
-    
+
+    if (localStorage.userLocation) {
+        this.cachedUserLocation = JSON.parse(localStorage.userLocation);
+    }
+   
     return this.cachedUserLocation;
   }
 
