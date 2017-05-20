@@ -2,14 +2,16 @@
 {
     display: flex;
     justify-content: space-between;
+    align-content: center;
+    align-items: center;
     position: relative;
-    padding: 30px 40px 0px 40px;
+    padding: 25px 40px;
     top:0;
-    font-size: 30px;
+    font-size: 20px;
     width: calc(100% - 80px);
-    background-color: white;
+    background-color: rgb(195, 195, 195);
     z-index: 101;
-    color:rgba(50,50,93,0.3);
+    color:white;
     font-weight: bold;
     min-height: 40px;
 }

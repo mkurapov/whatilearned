@@ -1,2 +1,2 @@
 <span>{{currentTime | async | date:'shortTime'}}</span>
-<span *ngIf="userLocation">{{userLocation.location.city}}</span>
+<span *ngIf="userLocation">{{userLocation.location.city + ',' + userLocation.location.region}}</span>
