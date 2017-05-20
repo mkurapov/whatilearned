@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Entry } from './classes/Entry';
 import { EntryService } from './entry.service';
-import { UnsplashService } from './unsplash.service';
+import { WeatherService } from './weather.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import jump from 'jump.js'
 
@@ -17,7 +17,7 @@ import {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['../styles/app.component.scss'],
-  providers: [EntryService, UnsplashService],
+  providers: [EntryService, WeatherService],
   animations: [
     trigger('fadeIn', [
       transition(':enter', [
@@ -32,31 +32,36 @@ export class AppComponent {
   public entries : Entry[] = []
   private bgImageSrc : string;
   private imageLoaded: boolean = false;
+  private userLocation:any;
 
-  constructor(private entryService: EntryService, private unsplashService:UnsplashService)
+  constructor(private entryService: EntryService, private weatherService:WeatherService)
   {
     
   }
 
   ngOnInit()
   {
-    this.unsplashService.getRandomImage().subscribe((src)=>{
-      this.bgImageSrc = src;
-    });
 
     this.entries = this.entryService.getEntries();
+
+    navigator.geolocation.getCurrentPosition((pos)=>{
+      this.weatherService.getWeather(pos.coords).subscribe((res)=>{
+        this.userLocation = res
+        console.log(res)
+      });
+    }, ()=>{}, ()=>{});
   }
 
   
 
   addNewEntry(newEntry: Entry)
   {
-    this.entryService.addEntry(newEntry);
-    jump('body', {
-        duration: 500,
-        offset: 0
-      })
-      
+    jump(-1*document.body.scrollTop,{
+      duration:200,
+      callback: () => this.entryService.addEntry(newEntry)
+    });
+    
+    
   }
 
   

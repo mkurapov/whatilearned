@@ -1,6 +1,6 @@
 <div class="app-wrap">
     <div class="header-wrap">
-        <app-dashboard></app-dashboard>
+        <app-dashboard [userLocation]="userLocation" ></app-dashboard>
         <app-input-form (onSubmitEntry)="addNewEntry($event)"></app-input-form>
     </div>
     <div class="entries-wrap">

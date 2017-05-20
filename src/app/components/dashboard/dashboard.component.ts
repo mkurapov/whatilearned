@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   
+  @Input() userLocation : any;
   public currentTime = <Observable<any>> Observable.of('Loading...');
 
   constructor() { }
