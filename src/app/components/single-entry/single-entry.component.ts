@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeHtml} from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-single-entry',
@@ -7,10 +9,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SingleEntryComponent implements OnInit {
   @Input() entry;
+  public entryBody: SafeHtml;
   
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) {
+
+    
+    
+  }
 
   ngOnInit() {
+
+    if (this.entry){
+      this.entryBody = this.sanitizer.bypassSecurityTrustHtml(this.entry.body);
+      console.log(this.entryBody)
+    } 
+
   }
 
 }

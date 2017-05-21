@@ -1,8 +1,11 @@
 .entries-wrap
 {
    // width:80%;
-   
+   background-color: white;
+   min-height: calc(100% - 205px);
    margin-top: 205px;
+   width: 100%;
+   position: absolute;
 }
 
 
@@ -12,6 +15,7 @@
     //margin: 0 auto;
     .header-wrap
     {
+        background-color: #f0f0f0;
         position: fixed;
         display: flex;
         flex-direction: column;

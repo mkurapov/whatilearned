@@ -4,6 +4,7 @@ import { Entry } from './classes/Entry';
 import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import anchorMe from 'anchorme';
 
 @Injectable()
 export class EntryService {
@@ -32,7 +33,8 @@ export class EntryService {
 
   addEntry(newEntry:Entry)
   {
-   
+    let encodeUrls = anchorMe(newEntry.body);
+    newEntry.body = encodeUrls;
     this.entries.unshift(newEntry);
     console.log(JSON.stringify(this.entries))
     this.updateLocalStorage()
