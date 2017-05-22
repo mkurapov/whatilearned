@@ -9,7 +9,7 @@ import { DomSanitizer, SafeResourceUrl, SafeHtml} from '@angular/platform-browse
 })
 export class SingleEntryComponent implements OnInit {
   @Input() entry;
-  public entryBody: SafeHtml;
+  public bodyList: SafeHtml[] = [];
   
   constructor(private sanitizer: DomSanitizer) {
 
@@ -19,11 +19,16 @@ export class SingleEntryComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.entry){
-      this.entryBody = this.sanitizer.bypassSecurityTrustHtml(this.entry.body);
-      console.log(this.entryBody)
+    if (this.entry) {
+      for (let li of this.entry.body) {
+        this.bodyList.push(this.sanitizer.bypassSecurityTrustHtml(li));
+      }
     } 
 
   }
+
+  // trackByFn(index, entry) {
+
+  // }
 
 }

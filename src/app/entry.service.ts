@@ -13,14 +13,15 @@ export class EntryService {
 
   constructor() 
   {
+    
   }
   
   getEntries() 
   {
-    if (localStorage.entries)
-    {
+    if (localStorage.entries) {
       this.entries = <Entry[]> JSON.parse(localStorage.entries);
     }
+
   
     return this.entries;
   }
@@ -31,12 +32,32 @@ export class EntryService {
     return res.json();
   }
 
-  addEntry(newEntry:Entry)
+  addEntry(newBodyElement:string)
   {
-    let encodeUrls = anchorMe(newEntry.body);
-    newEntry.body = encodeUrls;
-    this.entries.unshift(newEntry);
-    console.log(JSON.stringify(this.entries))
+
+    let newEntry = {
+      id: Math.random(),
+      body: [],
+      date: new Date()
+    }
+
+    let encodedBodyString = anchorMe(newBodyElement);
+    
+    let previousEntry = this.entries[0];
+
+  
+    
+    if (previousEntry) {
+      if ((new Date(previousEntry.date).toDateString() === newEntry.date.toDateString())) {
+        previousEntry.body.push(encodedBodyString)
+        this.entries[0] = previousEntry;
+      }
+    }
+    else {
+      newEntry.body.push(encodedBodyString);
+      this.entries.unshift(newEntry);
+    }
+
     this.updateLocalStorage()
   }
 

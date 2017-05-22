@@ -77,14 +77,19 @@ export class AppComponent {
 
   
 
-  addNewEntry(newEntry: Entry)
+  addNewEntry(newEntryBody: string)
   {
     jump(-document.body.scrollTop,{
       duration:200,
-      callback: () => this.entryService.addEntry(newEntry)
+      callback: () => this.entryService.addEntry(newEntryBody)
     });
     
     
+  }
+
+  trackByFn(index, entry){
+    console.log(entry)
+    return entry.body.length;
   }
 
   

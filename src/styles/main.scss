@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+@import './variables';
+
 html,body{min-height: 100%}
 
 body
@@ -8,5 +10,11 @@ body
     //color:white;
     font-family: 'Roboto';
     font-weight: normal;
-    background-color: #f0f0f0;
+    background-color: $light-grey;
+}
+
+//don't work in component for some reason
+a,a:link,a:visited
+{
+    color:$text-grey;
 }
