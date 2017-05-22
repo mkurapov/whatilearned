@@ -18,6 +18,7 @@ export class EntryService {
   
   getEntries() 
   {
+    console.log('jere')
     if (localStorage.entries) {
       this.entries = <Entry[]> JSON.parse(localStorage.entries);
     }
@@ -34,23 +35,19 @@ export class EntryService {
 
   addEntry(newBodyElement:string)
   {
-
     let newEntry = {
       id: Math.random(),
       body: [],
       date: new Date()
     }
 
-    let encodedBodyString = anchorMe(newBodyElement);
-    
+    newEntry.date.setDate(22)
+    let encodedBodyString = anchorMe(newBodyElement);    
     let previousEntry = this.entries[0];
 
-  
-    
     if (previousEntry) {
       if ((new Date(previousEntry.date).toDateString() === newEntry.date.toDateString())) {
         previousEntry.body.push(encodedBodyString)
-        this.entries[0] = previousEntry;
       }
     }
     else {
@@ -63,7 +60,6 @@ export class EntryService {
 
   updateLocalStorage()
   {
-    console.log(this.entries)
     localStorage.entries = JSON.stringify(this.entries);
   }
 }

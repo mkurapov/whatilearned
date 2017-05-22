@@ -26,6 +26,11 @@
         font-size: 40px;
         color:$text-grey;
         line-height: 55px;
+
+        li
+        {
+            list-style: none;
+        }
     }    
 }
 

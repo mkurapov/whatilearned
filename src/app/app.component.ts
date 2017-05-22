@@ -83,12 +83,9 @@ export class AppComponent {
       duration:200,
       callback: () => this.entryService.addEntry(newEntryBody)
     });
-    
-    
   }
 
-  trackByFn(index, entry){
-    console.log(entry)
+  trackByBodyLength(index, entry){
     return entry.body.length;
   }
 
