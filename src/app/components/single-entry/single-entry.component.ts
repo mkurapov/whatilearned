@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl, SafeHtml} from '@angular/platform-browser';
 
 @Component({
@@ -9,6 +9,8 @@ import { DomSanitizer, SafeResourceUrl, SafeHtml} from '@angular/platform-browse
 
 export class SingleEntryComponent implements OnInit {
   @Input() entry;
+  @Output() onDeleteEntry: EventEmitter<any> = new EventEmitter();
+
   public bodyList: SafeHtml[] = [];
   
   constructor(private sanitizer: DomSanitizer) {}
@@ -20,6 +22,11 @@ export class SingleEntryComponent implements OnInit {
         this.bodyList.push(this.sanitizer.bypassSecurityTrustHtml(li));
       }
     } 
+  }
+
+  deleteEntry()
+  {
+    this.onDeleteEntry.emit(this.entry.id);
   }
 
   getDateColor()
