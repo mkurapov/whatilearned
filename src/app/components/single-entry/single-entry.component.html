@@ -1,4 +1,4 @@
-<h2 class="entry-date">{{entry.date | date}}</h2>
+<h2 class="entry-date" [style.color]="getDateColor()">{{entry.date | date}}</h2>
 <p class="entry-body" *ngFor="let li of bodyList; trackBy: trackByFn">
     <li [innerHTML]="li"></li>
 </p>

@@ -66,7 +66,6 @@ export class AppComponent {
     //   });
 
     this.userLocation = this.weatherService.getCachedLocation();
-    console.log(this.userLocation)
 
     navigator.geolocation.getCurrentPosition((pos)=>{
       this.weatherService.getWeather(pos.coords).subscribe((res)=>{
