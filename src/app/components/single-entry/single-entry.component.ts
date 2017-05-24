@@ -12,40 +12,18 @@ export class SingleEntryComponent implements OnInit {
   @Input() entry;
   @Output() onDeleteEntry: EventEmitter<any> = new EventEmitter();
 
-  public bodyList: SafeHtml[] = [];
+  public subEntryList:string[];
   
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() 
   {
     if (this.entry) {
-      for (let li of this.entry.body) {
-        this.bodyList.push(this.sanitizer.bypassSecurityTrustHtml(li));
-      }
+      this.subEntryList = this.entry.body;
     } 
   }
 
-  processEntry(i:number) 
-  {
   
-    const listEntry = this.entry.body[i];
-    const isUrlEntry = listEntry.match(/<\/?[^>]+(>|$)/g) ? true : false;
-
-    if (!isUrlEntry) {
-      let query = listEntry;
-      let context = nlp(listEntry).verbs().data();
-      const nouns = nlp(listEntry).nouns().data().map(e => e.singular).join(' ').toString();
-      console.log
-      if (nouns) {
-        query = nouns;
-      }
-
-      const url ='http://www.google.com/search?q=' + query;
-      window.open(url);
-    }
-    
-    
-  }
 
   deleteEntry()
   {

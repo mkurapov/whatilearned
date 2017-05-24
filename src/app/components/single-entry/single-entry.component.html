@@ -1,5 +1,5 @@
 <h2 class="entry-date" [style.color]="getDateColor()">{{entry.date | date}}</h2>
-<p class="entry-body" *ngFor="let li of bodyList; let i = index;tr">
-    <li (click)="processEntry(i)" [innerHTML]="li"></li>
+<p class="entry-body" *ngFor="let li of subEntryList; let i = index;tr">
+   <app-single-entry-list-item [listItem]="li"></app-single-entry-list-item>
 </p>
 

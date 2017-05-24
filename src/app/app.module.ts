@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SingleEntryComponent } from './components/single-entry/single-entry.component';
 import { InputFormComponent } from './components/input-form/input-form.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SingleEntryListItemComponent } from './components/single-entry-list-item/single-entry-list-item.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SingleEntryComponent,
     InputFormComponent,
     DashboardComponent,
+    SingleEntryListItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+li
+{
+    list-style: none;
+    transition: color 0.3s ease-in;
+
+    &.ishoverable
+    {
+        cursor: pointer;
+        color:#eee;
+    }
+}
