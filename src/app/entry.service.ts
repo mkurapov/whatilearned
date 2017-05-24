@@ -40,12 +40,12 @@ export class EntryService {
       date: new Date()
     }
 
-    let encodedBodyString = anchorMe(newBodyElement);  
+    let encodedBodyString = anchorMe(newBodyElement, {attributes:[ /*{name:"target",value:"_blank"}*/]});  //will remove blank
     let previousEntry = this.entries[0] || null;
     let previousDate = previousEntry ? new Date(this.entries[0].date).toDateString() : null;
     let newDate = newEntry.date.toDateString();
     
-    if (previousDate === newDate){
+    if (previousDate === newDate) {
         previousEntry.body.unshift(encodedBodyString)
     }
     else {

@@ -1,4 +1,5 @@
 <h2 class="entry-date" [style.color]="getDateColor()">{{entry.date | date}}</h2>
-<p class="entry-body" *ngFor="let li of bodyList; trackBy: trackByFn">
-    <li [innerHTML]="li"></li>
+<p class="entry-body" *ngFor="let li of bodyList; let i = index;tr">
+    <li (click)="processEntry(i)" [innerHTML]="li"></li>
 </p>
+

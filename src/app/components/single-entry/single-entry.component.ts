@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl, SafeHtml} from '@angular/platform-browser';
+import nlp from 'compromise';
 
 @Component({
   selector: 'app-single-entry',
@@ -22,6 +23,28 @@ export class SingleEntryComponent implements OnInit {
         this.bodyList.push(this.sanitizer.bypassSecurityTrustHtml(li));
       }
     } 
+  }
+
+  processEntry(i:number) 
+  {
+  
+    const listEntry = this.entry.body[i];
+    const isUrlEntry = listEntry.match(/<\/?[^>]+(>|$)/g) ? true : false;
+
+    if (!isUrlEntry) {
+      let query = listEntry;
+      let context = nlp(listEntry).verbs().data();
+      const nouns = nlp(listEntry).nouns().data().map(e => e.singular).join(' ').toString();
+      console.log
+      if (nouns) {
+        query = nouns;
+      }
+
+      const url ='http://www.google.com/search?q=' + query;
+      window.open(url);
+    }
+    
+    
   }
 
   deleteEntry()
