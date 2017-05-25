@@ -2,8 +2,8 @@
 {
     display: flex;
     justify-content: space-between;
-    align-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: right;
     position: relative;
     padding: 20px 40px 0px 40px;
     top:0;
@@ -13,4 +13,17 @@
     color:rgb(195, 195, 195);
     font-weight: bold;
     min-height: 40px;
+
+    .row1, .row2
+    {
+        justify-content: space-between;
+        display: flex;
+        align-content: right;
+        width: 100%;
+    }
+
+    .row1 
+    {
+        margin-bottom: 5px;
+    }
 }

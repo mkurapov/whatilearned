@@ -1,5 +1,4 @@
 <h2 class="entry-date" [style.color]="getDateColor()">{{entry.date | date}}</h2>
-<p class="entry-body" *ngFor="let li of subEntryList; let i = index;tr">
-   <app-single-entry-list-item [listItem]="li"></app-single-entry-list-item>
-</p>
+<app-single-entry-list-item *ngFor="let li of subEntryList; let i = index;tr" [listItem]="li"></app-single-entry-list-item>
+
 

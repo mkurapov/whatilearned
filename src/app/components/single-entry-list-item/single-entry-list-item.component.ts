@@ -14,7 +14,8 @@ export class SingleEntryListItemComponent implements OnInit {
 
 
   public listItemBody: SafeHtml
-  public isHoverable:boolean = false;
+  private nouns:string;
+  public isQueriable:boolean = false;
   
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -23,12 +24,7 @@ export class SingleEntryListItemComponent implements OnInit {
     this.listItemBody = this.sanitizer.bypassSecurityTrustHtml(encodedBodyString);
     this.processListItem()
   }
-
-  isQueriable() 
-  {
-
-  }
-  
+ 
   processListItem() 
   {
     const listItemArray = this.listItem.toLowerCase();
@@ -40,21 +36,24 @@ export class SingleEntryListItemComponent implements OnInit {
       }
       return isSingular ? e.singular : e.plural;
     });
-    
-    console.log(nouns);
 
-    
-    
-    const isUrlEntry = this.listItem.match(/<\/?[^>]+(>|$)/g) ? true : false;
-
-   
-      
-
-      //const url ='http://www.google.com/search?q=' + query;
-      //window.open(url);
-
+    if (nouns.length > 0) {
+      this.nouns = nouns.join(' ');
+      this.isQueriable = true;
     }
     
+
     
+    
+      const isUrlEntry = this.listItem.match(/<\/?[^>]+(>|$)/g) ? true : false;
+    }
+
+    searchQuery(e)
+    {
+      if ((e.target.tagName.toLowerCase() !== 'a') && (this.isQueriable)) {
+          const url ='http://www.google.com/search?q=' + this.nouns;
+          window.open(url);
+      }
+    }
 }
 

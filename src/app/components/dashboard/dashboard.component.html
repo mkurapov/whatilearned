@@ -1,2 +1,9 @@
-<span>{{currentTime  | date:'shortTime'}}</span>
-<span *ngIf="userLocation.location">{{userLocation.location.city + ',' + userLocation.location.region}}</span>
+<div class="row1">
+    <span>{{currentTime  | date:'shortTime'}}</span>
+    <span>{{userTemperature}}</span>
+</div>
+<div class="row2">
+    <span>{{userArea}}</span>
+    
+    <span>{{userWeather}}</span>
+</div>
