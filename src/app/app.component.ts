@@ -84,6 +84,11 @@ export class AppComponent {
     });
   }
 
+  deleteSubEntry()
+  {
+
+  }
+
   trackByBodyLength(index, entry){
     return entry.body.length;
   }

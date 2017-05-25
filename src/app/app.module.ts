@@ -5,18 +5,18 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { SingleEntryComponent } from './components/single-entry/single-entry.component';
+import { EntryComponent } from './components/entry/entry.component';
 import { InputFormComponent } from './components/input-form/input-form.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SingleEntryListItemComponent } from './components/single-entry-list-item/single-entry-list-item.component';
+import { SubEntryComponent } from './components/sub-entry/sub-entry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SingleEntryComponent,
+    EntryComponent,
     InputFormComponent,
     DashboardComponent,
-    SingleEntryListItemComponent,
+    SubEntryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,4 @@
+<h2 class="entry-date" [style.color]="getDateColor()">{{entry.date | date}}</h2>
+<app-sub-entry *ngFor="let li of subEntryList; let i = index;tr" [itemString]="li" (onDeleteListItem)="deleteListItem($event)"></app-sub-entry>
+
+

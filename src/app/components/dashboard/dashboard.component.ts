@@ -20,9 +20,14 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userArea = this.userLocation.location.city + ', ' + this.userLocation.location.region;
-    this.userTemperature = this.celsiusToFahrenheit(this.userLocation.item.condition.temp)  + '°';
-    this.userWeather = this.userLocation.item.condition.text; //can map this to icon later
+    
+    if (this.userLocation) { 
+      console.log(this.userLocation)
+      this.userArea = this.userLocation.location.city + ', ' + this.userLocation.location.region;
+      this.userTemperature = this.celsiusToFahrenheit(this.userLocation.item.condition.temp)  + '°';
+      this.userWeather = this.userLocation.item.condition.text; //can map this to icon later
+    }
+    
     setInterval(_=>{
       this.currentTime = new Date();
     },1000)

@@ -3,12 +3,12 @@ import { DomSanitizer, SafeResourceUrl, SafeHtml} from '@angular/platform-browse
 import nlp from 'compromise';
 
 @Component({
-  selector: 'app-single-entry',
-  templateUrl: './single-entry.component.html',
-  styleUrls: ['../../../styles/single-entry.component.scss']
+  selector: 'app-entry',
+  templateUrl: './entry.component.html',
+  styleUrls: ['../../../styles/entry.component.scss']
 })
 
-export class SingleEntryComponent implements OnInit {
+export class EntryComponent implements OnInit {
   @Input() entry;
   @Output() onDeleteEntry: EventEmitter<any> = new EventEmitter();
 
@@ -28,6 +28,12 @@ export class SingleEntryComponent implements OnInit {
   deleteEntry()
   {
     this.onDeleteEntry.emit(this.entry.id);
+  }
+
+  deleteListItem(listItem: string)
+  {
+    this.onDeleteEntry.emit(this.entry.id);
+    console.log(this.entry.body.findIndex(e => e === listItem))
   }
 
   getDateColor()
