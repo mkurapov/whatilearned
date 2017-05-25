@@ -1,6 +1,20 @@
 # Whatilearned
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
+Chrome extension to track what you learn each day. Inspired by Momentum.
+
+## Features:
+- Angular 2
+- Ability to add entries by day (grouped if multiple)
+- Local storage
+- Google search for entries based on their context (working to improve)
+- Yahoo Weather API for giving dashboard info
+
+##  Future Ideas:
+- Hooking up with a backend for authentication and ability to store entries in a DB
+- Having reminders about what you learned the same day last month (for example)
+- Possibly machine learning for analyzing user entries and patterns that exist
+
+<br></br>
 
 ## Development server
 
