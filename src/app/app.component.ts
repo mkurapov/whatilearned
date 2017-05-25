@@ -84,9 +84,9 @@ export class AppComponent {
     });
   }
 
-  deleteSubEntry()
+  deleteSubEntry(entryWrap)
   {
-
+    this.entryService.deleteSubEntry(entryWrap);
   }
 
   trackByBodyLength(index, entry){

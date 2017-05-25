@@ -54,6 +54,24 @@ export class EntryService {
     this.updateLocalStorage()
   }
 
+  deleteSubEntry(entryWrap)
+  {
+    for (let i = 0; i < this.entries.length; i++) {
+      let entry = this.entries[i];
+
+      if (entry.id === entryWrap.entryId) {
+        entry.body.splice(entryWrap.subEntryIndex, 1);
+
+        if (entry.body.length === 0) {
+          this.entries.splice(i, 1);
+        }
+      }
+    }
+
+    this.updateLocalStorage()
+
+  }
+
   updateLocalStorage()
   {
     localStorage.entries = JSON.stringify(this.entries);

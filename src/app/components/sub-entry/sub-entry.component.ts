@@ -10,8 +10,8 @@ import anchorme from 'anchorme';
   styleUrls: ['../../../styles/sub-entry.component.scss']
 })
 export class SubEntryComponent implements OnInit {
-  @Input() itemString : string;
-  @Output() onDeleteListItem: EventEmitter<any> = new EventEmitter();
+  @Input() subEntryString : string;
+  @Output() onDeleteSubEntry: EventEmitter<any> = new EventEmitter();
 
 
   public listItemBody: SafeHtml
@@ -21,16 +21,16 @@ export class SubEntryComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    let encodedBodyString = anchorme(this.itemString, {attributes:[ /*{name:"target",value:"_blank"}*/]});  //will remove blank
+    let encodedBodyString = anchorme(this.subEntryString, {attributes:[ /*{name:"target",value:"_blank"}*/]});  //will remove blank
     this.listItemBody = this.sanitizer.bypassSecurityTrustHtml(encodedBodyString);
     this.processListItem()
   }
  
   processListItem() 
   {
-    const listItemArray = this.itemString.toLowerCase();
+    const listItemArray = this.subEntryString.toLowerCase();
    
-    const nouns = nlp(this.itemString).nouns().data().map(e => {
+    const nouns = nlp(this.subEntryString).nouns().data().map(e => {
       let isSingular = true;
       if (listItemArray.includes(e.plural)) {
         isSingular = false;
@@ -43,12 +43,11 @@ export class SubEntryComponent implements OnInit {
       this.isQueriable = true;
     }
 
-      const isUrlEntry = this.itemString.match(/<\/?[^>]+(>|$)/g) ? true : false;
-    }
+  }
 
-    deleteListItem()
+    deleteSubEntry()
     {
-      this.onDeleteListItem.emit(this.itemString);
+      this.onDeleteSubEntry.emit(this.subEntryString);
     }
 }
 

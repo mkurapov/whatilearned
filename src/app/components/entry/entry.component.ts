@@ -10,7 +10,7 @@ import nlp from 'compromise';
 
 export class EntryComponent implements OnInit {
   @Input() entry;
-  @Output() onDeleteEntry: EventEmitter<any> = new EventEmitter();
+  @Output() onDeleteSubEntry: EventEmitter<any> = new EventEmitter();
 
   public subEntryList:string[];
   
@@ -23,17 +23,11 @@ export class EntryComponent implements OnInit {
     } 
   }
 
-  
-
-  deleteEntry()
+  deleteSubEntry(subEntryBody: string)
   {
-    this.onDeleteEntry.emit(this.entry.id);
-  }
-
-  deleteListItem(listItem: string)
-  {
-    this.onDeleteEntry.emit(this.entry.id);
-    console.log(this.entry.body.findIndex(e => e === listItem))
+    console.log(subEntryBody)
+    const subEntryIndex = this.entry.body.findIndex(e => e === subEntryBody);
+    this.onDeleteSubEntry.emit({entryId:this.entry.id, subEntryIndex: subEntryIndex});
   }
 
   getDateColor()

@@ -4,6 +4,6 @@
         <app-input-form (onSubmitEntry)="addNewEntry($event)"></app-input-form>
     </div>
     <div class="entries-wrap">
-        <app-entry  [@fadeIn]="" *ngFor="let entry of entries; trackBy: trackByBodyLength" [entry]="entry"></app-entry>
+        <app-entry  [@fadeIn]="" *ngFor="let entry of entries; trackBy: trackByBodyLength" [entry]="entry" (onDeleteSubEntry)="deleteSubEntry($event)"></app-entry>
     </div>
 </div>
