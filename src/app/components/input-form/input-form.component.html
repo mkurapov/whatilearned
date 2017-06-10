@@ -1,5 +1,5 @@
-<div class="form-wrap" [class.shrunk] = "isShrunk" >
-<form (ngSubmit)="submitEntry()">
-  <input [(ngModel)]="inputBody" name="entry-input" placeholder="What did you learn today?" autofocus autocomplete="off"/>
+<div class="form-wrap" [class.shrunk]="isShrunk" >
+<form [formGroup]="newEntryForm" (ngSubmit)="submitEntry(newEntryForm.value)">
+  <input name="newEntryInput" formControlName="newEntryInput" placeholder="What did you learn today?" autofocus autocomplete="off"/>
 </form>
 </div>

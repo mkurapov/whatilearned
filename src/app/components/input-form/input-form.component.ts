@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { Entry } from '../../classes/Entry';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-input-form',
@@ -7,6 +8,8 @@ import { Entry } from '../../classes/Entry';
   styleUrls: ['../../../styles/input-form.component.scss']
 })
 export class InputFormComponent implements OnInit {
+
+  public newEntryForm: FormGroup
 
   //NEED TO ADD FORM VALIDATION
   @Output() onSubmitEntry: EventEmitter<any> = new EventEmitter();
@@ -16,14 +19,25 @@ export class InputFormComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    let newEntryInput = new FormControl('', [Validators.required, Validators.minLength(1)]);
+    this.newEntryForm = new FormGroup({
+      newEntryInput: newEntryInput
+    })
   }
 
-  submitEntry()
+  submitEntry(formValues)
   {
-    if (this.inputBody) {
-      this.onSubmitEntry.emit(this.inputBody)
-      this.inputBody = ""
+    //console.log(formValues)
+    if (this.newEntryForm.valid) {
+
+      const trimmedInput = formValues.newEntryInput.trim();
+
+      if (trimmedInput !== '') {
+        this.onSubmitEntry.emit(trimmedInput)
+      }   
+      this.newEntryForm.reset()
     }
   }
 

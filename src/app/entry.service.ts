@@ -10,10 +10,7 @@ export class EntryService {
 
   private entries : Entry[] = [];
 
-  constructor() 
-  {
-    
-  }
+  constructor() {}
   
   getEntries() 
   {
@@ -21,10 +18,8 @@ export class EntryService {
       this.entries = <Entry[]> JSON.parse(localStorage.entries);
     }
 
-  
     return this.entries;
   }
-
 
   extractData(res: Response)
   {
@@ -69,7 +64,6 @@ export class EntryService {
     }
 
     this.updateLocalStorage()
-
   }
 
   updateLocalStorage()

@@ -5,7 +5,6 @@
     //justify-content: space-between;
     flex-direction: column;
     margin: 10px 0 0 0;
-    min-height: 80px;
 
     .query-button
     {
@@ -29,13 +28,20 @@
         list-style: none;
         transition: color 0.3s ease-in;
         
-        font-size: 40px;
+        font-size: 30px;
         color:$text-grey;
         line-height: 55px;
 
         &:before 
         {
-            content: '- '
+            content: ' ';
+            width: 1px;
+            position: absolute;
+            height: 40px;
+            color:grey;
+            vertical-align: middle;
+            //padding-right: 10px;
+            font-size: 22px;
         }
 
     }

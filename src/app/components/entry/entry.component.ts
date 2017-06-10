@@ -25,7 +25,6 @@ export class EntryComponent implements OnInit {
 
   deleteSubEntry(subEntryBody: string)
   {
-    console.log(subEntryBody)
     const subEntryIndex = this.entry.body.findIndex(e => e === subEntryBody);
     this.onDeleteSubEntry.emit({entryId:this.entry.id, subEntryIndex: subEntryIndex});
   }

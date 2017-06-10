@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     
-    if (this.userLocation) { 
+    if (this.userLocation !== {}) { 
       console.log(this.userLocation)
       this.userArea = this.userLocation.location.city + ', ' + this.userLocation.location.region;
       this.userTemperature = this.celsiusToFahrenheit(this.userLocation.item.condition.temp)  + '°';
