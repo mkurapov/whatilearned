@@ -31,7 +31,7 @@ export class EntryComponent implements OnInit {
 
   getDateColor()
   {
-    const colors = ['#87cefa', '#facc87','#9387fa','#fa8787','#87dafa'];
+    const colors = ['#87cefa', '#9387fa','#fa8787', '#78ca78', '#facc87'];
     return colors[new Date(this.entry.date).getDate() % colors.length];
   }
 }
