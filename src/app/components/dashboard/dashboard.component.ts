@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs';
+import { isEmptyObj } from '../../helpers/helpers';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,26 +17,20 @@ export class DashboardComponent implements OnInit {
   public currentTime : Date = new Date();
   
   constructor() { 
-    
   }
 
   ngOnInit() {
-    
-    if (this.userLocation !== {}) { 
-      console.log(this.userLocation)
-      this.userArea = this.userLocation.location.city + ', ' + this.userLocation.location.region;
-      this.userTemperature = this.celsiusToFahrenheit(this.userLocation.item.condition.temp)  + '°';
-      this.userWeather = this.userLocation.item.condition.text; //can map this to icon later
-    }
-    
     setInterval(_=>{
       this.currentTime = new Date();
     },1000)
   }
 
-  //turn into pipe
-  celsiusToFahrenheit(value: number)
-  {
-         return Math.round((value - 32) * 5/9);
+  ngOnChanges() {
+    if (!isEmptyObj(this.userLocation)) { 
+      
+      this.userArea = this.userLocation.location.city + ', ' + this.userLocation.location.region;
+      this.userTemperature = this.userLocation.item.condition.temp;
+      this.userWeather = this.userLocation.item.condition.text; //can map this to icon later
+    }
   }
 }

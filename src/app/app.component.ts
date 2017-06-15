@@ -38,7 +38,7 @@ export class AppComponent {
   public entries : Entry[] = []
   private bgImageSrc : string;
   private imageLoaded: boolean = false;
-  public userLocation:any;
+  public userLocation:any = null;
   
 
   constructor(private entryService: EntryService, private weatherService:WeatherService)

@@ -1,7 +1,7 @@
 <div *ngIf="userLocation !== {}" class="dashboard-wrap">
     <div class="row1">
         <span>{{currentTime  | date:'shortTime'}}</span>
-        <span>{{userTemperature}}</span>
+        <span>{{userTemperature | tempConverter:'C'}}</span>
     </div>
     <div class="row2">
         <span>{{userArea}}</span>

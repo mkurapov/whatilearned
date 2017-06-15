@@ -9,6 +9,7 @@ import { EntryComponent } from './components/entry/entry.component';
 import { InputFormComponent } from './components/input-form/input-form.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SubEntryComponent } from './components/sub-entry/sub-entry.component';
+import { TempConverterPipe } from './pipes/temp-converter.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SubEntryComponent } from './components/sub-entry/sub-entry.component';
     InputFormComponent,
     DashboardComponent,
     SubEntryComponent,
+    TempConverterPipe,
   ],
   imports: [
     BrowserModule,
