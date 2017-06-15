@@ -13,7 +13,7 @@ import {
   transition
 } from '@angular/animations';
 
-declare var chrome : any; 
+// declare var chrome : any; 
 
 
 @Component({
@@ -46,7 +46,6 @@ export class AppComponent {
   {
 
     this.entries = this.entryService.getEntries();
-
 
     // chrome.identity.getAuthToken( (token) => {
     //       if (chrome.runtime.lastError) {

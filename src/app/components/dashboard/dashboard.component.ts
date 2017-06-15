@@ -11,9 +11,9 @@ export class DashboardComponent implements OnInit {
   
   @Input() userLocation : any;
 
-  public userArea: any;
-  public userTemperature:any;
-  public userWeather:any;
+  public userArea: any = 'Home';
+  public userTemperature:any = 32;
+  public userWeather:any = 'Sunny';
   public currentTime : Date = new Date();
   
   constructor() { 

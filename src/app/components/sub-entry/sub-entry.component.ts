@@ -15,7 +15,7 @@ export class SubEntryComponent implements OnInit {
 
 
   public listItemBody: SafeHtml
-  private nouns:string;
+  public nouns:string;
   public isQueriable:boolean = false;
   
   constructor(private sanitizer: DomSanitizer) { }
