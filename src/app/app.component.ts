@@ -40,11 +40,7 @@ export class AppComponent {
   private imageLoaded: boolean = false;
   public userLocation:any = null;
   
-
-  constructor(private entryService: EntryService, private weatherService:WeatherService)
-  {
-    
-  }
+  constructor(private entryService: EntryService, private weatherService:WeatherService){}
 
   ngOnInit()
   {
@@ -92,6 +88,4 @@ export class AppComponent {
   trackByBodyLength(index, entry){
     return entry.body.length;
   }
-
-  
 }

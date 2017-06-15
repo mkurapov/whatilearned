@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnChanges() {
     if (!isEmptyObj(this.userLocation)) { 
-      
       this.userArea = this.userLocation.location.city + ', ' + this.userLocation.location.region;
       this.userTemperature = this.userLocation.item.condition.temp;
       this.userWeather = this.userLocation.item.condition.text; //can map this to icon later

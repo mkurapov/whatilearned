@@ -6,8 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TempConverterPipe implements PipeTransform {
 
   transform(value: number, args: string): string {
-
-    let res;
+    let res: number;
     switch (args) {
       case 'C':
         res = Math.round((value - 32) * 5/9);
@@ -16,11 +15,13 @@ export class TempConverterPipe implements PipeTransform {
         res = Math.round(value * 9 / 5) + 32;
         break;
       default:
-        res = value;
+    }
+
+    if (res === NaN) {
+      res = 0;
     }
 
     return res+'°';
-    
   }
 
 }

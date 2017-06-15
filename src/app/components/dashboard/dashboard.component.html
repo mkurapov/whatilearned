@@ -1,11 +1,10 @@
-<div *ngIf="userLocation !== {}" class="dashboard-wrap">
+<div class="dashboard-wrap">
     <div class="row1">
         <span>{{currentTime  | date:'shortTime'}}</span>
         <span>{{userTemperature | tempConverter:'C'}}</span>
     </div>
     <div class="row2">
         <span>{{userArea}}</span>
-        
         <span>{{userWeather}}</span>
     </div>
 </div>
