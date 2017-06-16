@@ -10,6 +10,7 @@
 
   "icons": { 
     "64": "wil64.png",
+    "128": "wil128.png",
     "256": "wil256.png"
   },
 
@@ -20,9 +21,11 @@
    "background": {
     "scripts": ["background.js"]
   },
-
+   
   "permissions": [
     "activeTab",
     "geolocation"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+
 }
