@@ -1,6 +1,6 @@
-# Whatilearned
+# What I Learned
 
-Chrome extension to track what you learn each day. Inspired by Momentum.
+[Chrome extension](https://chrome.google.com/webstore/detail/what-i-learned/dlcifkbafooiigbaibnipdghcmlfdpbi) to track what you learn each day. Inspired by Momentum.
 
 ## Features:
 - Angular 2
