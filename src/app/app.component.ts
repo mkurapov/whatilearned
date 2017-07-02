@@ -46,6 +46,7 @@ export class AppComponent {
   {
 
     this.entries = this.entryService.getEntries();
+    console.log(this.entries)
 
     // chrome.identity.getAuthToken( (token) => {
     //       if (chrome.runtime.lastError) {
@@ -82,9 +83,5 @@ export class AppComponent {
   deleteSubEntry(entryWrap)
   {
     this.entryService.deleteSubEntry(entryWrap);
-  }
-
-  trackByBodyLength(index, entry){
-    return entry.body.length;
   }
 }

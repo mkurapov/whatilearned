@@ -1,6 +1,7 @@
  <li class="list-item-text" [innerHTML]="listItemBody" >
  </li>
  <div class="options-bar">
+    <button class="query-button" (click)="highlightSubEntry()">Highlight</button>
      <button class="query-button" (click)="deleteSubEntry()">Delete</button>
      <a class="query-button" [hidden]="!isQueriable" [attr.href]="'http://www.google.com/search?q=' + nouns"><span>Search for {{nouns}}</span></a>
  </div>

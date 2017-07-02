@@ -1,7 +1,12 @@
-export class Entry {
+export interface SubEntry {
   id: number;
-  body: string[];
-  date: Date;
-
-  constructor(id:number,body:string[],date:Date){}
+  text: string;
+  isHighlighted?: boolean;
 }
+
+export interface Entry {
+  id: number;
+  body: SubEntry[];
+  date: Date;
+}
+

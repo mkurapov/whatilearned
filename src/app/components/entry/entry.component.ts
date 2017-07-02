@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl, SafeHtml} from '@angular/platform-browser';
+import { SubEntry } from '../../classes/Entry';
+
 import nlp from 'compromise';
 
 @Component({
@@ -12,21 +14,21 @@ export class EntryComponent implements OnInit {
   @Input() entry;
   @Output() onDeleteSubEntry: EventEmitter<any> = new EventEmitter();
 
-  public subEntryList:string[];
+  public subEntryList:SubEntry[];
   
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() 
   {
+    console.log(this.subEntryList)
     if (this.entry) {
       this.subEntryList = this.entry.body;
     } 
   }
 
-  deleteSubEntry(subEntryBody: string)
+  deleteSubEntry(subEntry: SubEntry)
   {
-    const subEntryIndex = this.entry.body.findIndex(e => e === subEntryBody);
-    this.onDeleteSubEntry.emit({entryId:this.entry.id, subEntryIndex: subEntryIndex});
+    this.onDeleteSubEntry.emit({parentEntry: this.entry, subEntry: subEntry});
   }
 
   getDateColor()

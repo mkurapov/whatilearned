@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Entry } from './classes/Entry';
+import { Entry, SubEntry } from './classes/Entry';
 import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -18,6 +18,30 @@ export class EntryService {
       this.entries = <Entry[]> JSON.parse(localStorage.entries);
     }
 
+    //need to make this check more reasonable
+    if (this.entries.length > 0) {
+
+      for (let i = 0; i < this.entries.length; i++) {
+        let body = this.entries[i].body;  
+
+        for (let j = 0; j < body.length; j++) {
+          let subEntry = body[j]; 
+
+          if (typeof subEntry == 'string') {
+
+            let newSubEntry:SubEntry = {
+              id: Math.random(),
+              text:subEntry,
+              isHighlighted:false
+            }
+            this.entries[i].body[j] = newSubEntry;
+          }
+        }
+    }
+  }
+
+   console.log(this.entries)
+
     return this.entries;
   }
 
@@ -28,10 +52,16 @@ export class EntryService {
 
   addEntry(newBodyElement:string)
   {
-    let newEntry = {
+    let newEntry:Entry = {
       id: Math.random(),
       body: [],
       date: new Date()
+    }
+
+    let newSubEntry:SubEntry = {
+      id: Math.random(),
+      text:newBodyElement,
+      isHighlighted:false
     }
 
     let previousEntry = this.entries[0] || null;
@@ -39,10 +69,10 @@ export class EntryService {
     let newDate = newEntry.date.toDateString();
     
     if (previousDate === newDate) {
-        previousEntry.body.unshift(newBodyElement)
+        previousEntry.body.unshift(newSubEntry)
     }
     else {
-        newEntry.body.unshift(newBodyElement);
+        newEntry.body.unshift(newSubEntry);
         this.entries.unshift(newEntry);
     }
 
@@ -51,6 +81,15 @@ export class EntryService {
 
   deleteSubEntry(entryWrap)
   {
+    let entryToChange = entryWrap.parentEntry;
+    let subEntryToChange = entryWrap.subEntry;
+
+    //try to check if id exists, if not, use by text
+    let subEntryIndex = subEntryToChange.id;
+    if (!subEntryIndex) {
+      subEntryIndex = entryToChange.body.findIndex(e => e.text === subEntryToChange.text);
+    }
+
     for (let i = 0; i < this.entries.length; i++) {
       let entry = this.entries[i];
 

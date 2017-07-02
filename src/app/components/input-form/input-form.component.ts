@@ -11,7 +11,6 @@ export class InputFormComponent implements OnInit {
 
   public newEntryForm: FormGroup
 
-  //NEED TO ADD FORM VALIDATION
   @Output() onSubmitEntry: EventEmitter<any> = new EventEmitter();
 
   public inputBody : string;

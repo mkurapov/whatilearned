@@ -5,6 +5,12 @@
     //justify-content: space-between;
     flex-direction: column;
     margin: 10px 0 0 0;
+    padding-left: 15px;
+
+    .options-bar
+    {
+        padding-left: 34px;
+    }
 
     .query-button
     {
@@ -20,30 +26,23 @@
         color: grey;
         text-align: left;
         word-wrap: nowrap;
-        font-size: 15px;
+        font-size: 13px;
         padding: 0;
-        margin-right: 4px;
+        margin-right: 6px;
     }
 
     .list-item-text
     {
-        list-style: none;
         transition: color 0.3s ease-in;
-        
-        font-size: 30px;
+        font-size: 25px;
         color:$text-grey;
         line-height: 55px;
 
         &:before 
         {
             content: ' ';
-            width: 1px;
-            position: absolute;
-            height: 40px;
-            color:grey;
-            vertical-align: middle;
-            //padding-right: 10px;
-            font-size: 22px;
+            position: relative;
+            margin-left: -15px;
         }
 
     }
