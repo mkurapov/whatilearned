@@ -18,7 +18,7 @@ export class EntryService {
       this.entries = <Entry[]> JSON.parse(localStorage.entries);
     }
 
-    //need to make this check more reasonable
+    //need to make this check more reasonable, should remove down the road once new entries are in the same format
     if (this.entries.length > 0) {
 
       for (let i = 0; i < this.entries.length; i++) {
@@ -39,9 +39,6 @@ export class EntryService {
         }
     }
   }
-
-   console.log(this.entries)
-
     return this.entries;
   }
 
@@ -81,26 +78,25 @@ export class EntryService {
 
   deleteSubEntry(entryWrap)
   {
+    console.log(entryWrap)
     let entryToChange = entryWrap.parentEntry;
     let subEntryToChange = entryWrap.subEntry;
-
-    //try to check if id exists, if not, use by text
-    let subEntryIndex = subEntryToChange.id;
-    if (!subEntryIndex) {
-      subEntryIndex = entryToChange.body.findIndex(e => e.text === subEntryToChange.text);
-    }
-
-    for (let i = 0; i < this.entries.length; i++) {
-      let entry = this.entries[i];
-
-      if (entry.id === entryWrap.entryId) {
-        entry.body.splice(entryWrap.subEntryIndex, 1);
-
+    
+      for (const entry of this.entries) {
+      if (entry.id === entryToChange.id) {
+        const subIndex = entry.body.findIndex(sub => sub.id == subEntryToChange.id);
+        entry.body.splice(subIndex, 1);
+        
         if (entry.body.length === 0) {
-          this.entries.splice(i, 1);
+          const entryIndex = this.entries.findIndex(e => e.id == entry.id);
+          this.entries.splice(entryIndex, 1);
         }
+
+        break;
       }
     }
+    
+    
 
     this.updateLocalStorage()
   }

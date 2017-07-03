@@ -46,7 +46,6 @@ export class AppComponent {
   {
 
     this.entries = this.entryService.getEntries();
-    console.log(this.entries)
 
     // chrome.identity.getAuthToken( (token) => {
     //       if (chrome.runtime.lastError) {
