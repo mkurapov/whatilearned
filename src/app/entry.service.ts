@@ -78,26 +78,23 @@ export class EntryService {
 
   deleteSubEntry(entryWrap)
   {
-    console.log(entryWrap)
     let entryToChange = entryWrap.parentEntry;
     let subEntryToChange = entryWrap.subEntry;
     
       for (const entry of this.entries) {
       if (entry.id === entryToChange.id) {
-        const subIndex = entry.body.findIndex(sub => sub.id == subEntryToChange.id);
-        entry.body.splice(subIndex, 1);
+        const subToRemoveIndex = entry.body.findIndex(sub => sub.id == subEntryToChange.id);
+        entry.body.splice(subToRemoveIndex, 1);
         
         if (entry.body.length === 0) {
-          const entryIndex = this.entries.findIndex(e => e.id == entry.id);
-          this.entries.splice(entryIndex, 1);
+          const entryToRemoveIndex = this.entries.findIndex(e => e.id == entry.id);
+          this.entries.splice(entryToRemoveIndex, 1);
         }
 
         break;
       }
     }
     
-    
-
     this.updateLocalStorage()
   }
 

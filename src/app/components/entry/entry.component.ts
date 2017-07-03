@@ -20,7 +20,6 @@ export class EntryComponent implements OnInit {
 
   ngOnInit() 
   {
-    console.log(this.subEntryList)
     if (this.entry) {
       this.subEntryList = this.entry.body;
     } 
